@@ -97,9 +97,16 @@ async function createContext(projectName, options) {
 
     await fs.ensureDir(projectDir);
 
-    // Copy context template
+    // Copy context template (excluding rules directory as we'll handle it separately)
     const templateDir = path.join(__dirname, '..', 'context');
-    await fs.copy(templateDir, path.join(projectDir, 'context'));
+    const projectContextDir = path.join(projectDir, 'context');
+
+    // Copy everything except rules directory
+    await fs.copy(templateDir, projectContextDir, {
+        filter: (src) => {
+            return !src.includes('rules');
+        }
+    });
 
     // Create project-specific context
     await createProjectContext(projectDir, projectName, projectType);
@@ -160,10 +167,14 @@ async function createProjectContext(projectDir, projectName, projectType) {
     } else if (projectType === 'rails') {
         await createRailsTemplates(contextDir);
     }
+
+    // Create project-specific rules
+    await createProjectRules(contextDir, projectType);
 }
 
 async function createNextJSTemplates(contextDir) {
     const templatesDir = path.join(contextDir, 'templates');
+    await fs.ensureDir(templatesDir);
 
     // Create Next.js specific template
     const nextTemplate = `---
@@ -198,6 +209,7 @@ alwaysApply: false
 
 async function createRailsTemplates(contextDir) {
     const templatesDir = path.join(contextDir, 'templates');
+    await fs.ensureDir(templatesDir);
 
     // Create Rails specific template
     const railsTemplate = `---
@@ -438,6 +450,51 @@ Remember: The context system is designed to make AI-assisted development more ef
 `;
 
     await fs.writeFile(path.join(projectDir, 'Claude.md'), claudeContent);
+}
+
+async function createProjectRules(contextDir, projectType) {
+    const rulesDir = path.join(contextDir, 'rules');
+    await fs.ensureDir(rulesDir);
+
+    // Copy base rules
+    const baseRulesDir = path.join(__dirname, '..', 'context', 'rules');
+
+    // Copy create-prd.md (same for all project types)
+    await fs.copy(
+        path.join(baseRulesDir, 'create-prd.md'),
+        path.join(rulesDir, 'create-prd.md')
+    );
+
+    // Copy framework-specific rules
+    if (projectType === 'next') {
+        await fs.copy(
+            path.join(baseRulesDir, 'generate-tasks-nextjs.md'),
+            path.join(rulesDir, 'generate-tasks.md')
+        );
+        await fs.copy(
+            path.join(baseRulesDir, 'process-task-list-nextjs.md'),
+            path.join(rulesDir, 'process-task-list.md')
+        );
+    } else if (projectType === 'rails') {
+        await fs.copy(
+            path.join(baseRulesDir, 'generate-tasks-rails.md'),
+            path.join(rulesDir, 'generate-tasks.md')
+        );
+        await fs.copy(
+            path.join(baseRulesDir, 'process-task-list-rails.md'),
+            path.join(rulesDir, 'process-task-list.md')
+        );
+    } else {
+        // Generic project - copy base rules
+        await fs.copy(
+            path.join(baseRulesDir, 'generate-tasks.md'),
+            path.join(rulesDir, 'generate-tasks.md')
+        );
+        await fs.copy(
+            path.join(baseRulesDir, 'process-task-list.md'),
+            path.join(rulesDir, 'process-task-list.md')
+        );
+    }
 }
 
 program.parse(); 

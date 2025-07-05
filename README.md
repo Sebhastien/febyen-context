@@ -57,7 +57,7 @@ npx febyen-context my-generic-app
 
 When you run `febyen-context`, it creates a structured project with the following context system:
 
-```
+```md
 my-project/
 ├── context/
 │   ├── CONTEXT.md              # Main project overview
@@ -75,6 +75,10 @@ my-project/
 │   │   ├── process-task-list.mdc # Task processing template
 │   │   ├── nextjs-guidelines.mdc # Next.js specific guidelines (if --next)
 │   │   └── rails-guidelines.mdc # Rails specific guidelines (if --rails)
+│   ├── rules/                # Framework-specific development rules
+│   │   ├── create-prd.md     # PRD creation guidelines
+│   │   ├── generate-tasks.md # Task generation rules (framework-specific)
+│   │   └── process-task-list.md # Task processing rules (framework-specific)
 │   └── ROADMAP.md            # Project roadmap
 ├── Claude.md                  # AI assistant instructions
 └── README.md                 # Project-specific README
@@ -84,30 +88,35 @@ my-project/
 
 ### For Developers
 
-- **Consistent Structure**: Every project follows the same organized pattern
-- **AI-Ready**: Templates and documentation optimized for AI assistants
-- **Scalable**: Easy to add new features and maintain documentation
-- **Collaborative**: Clear structure for team collaboration
+- Consistent Structure: Every project follows the same organized pattern
+- AI-Ready: Templates and documentation optimized for AI assistants
+- Scalable: Easy to add new features and maintain documentation
+- Collaborative: Clear structure for team collaboration
 
 ### For AI Assistants
 
-- **Context Awareness**: AI can understand project goals and constraints
-- **Template Usage**: Structured templates for consistent development
-- **Feature Tracking**: Clear visibility into what's being built
-- **Documentation Standards**: Consistent formatting and organization
+- Context Awareness: AI can understand project goals and constraints
+- Template Usage: Structured templates for consistent development
+- Feature Tracking: Clear visibility into what's being built
+- Documentation Standards: Consistent formatting and organization
 
 ## Templates Included
 
 ### Core Templates
 
 - **`create-prd.mdc`**: Template for creating Product Requirements Documents
-- **`generate-tasks.mdc`**: Template for breaking down features into tasks
-- **`process-task-list.mdc`**: Template for processing and organizing task lists
+- **`generate-tasks.mdc`**: Template for breaking down features into tasks (framework-specific)
+- **`process-task-list.mdc`**: Template for processing and organizing task lists (framework-specific)
 
 ### Framework-Specific Templates
 
 - **`nextjs-guidelines.mdc`**: Next.js development guidelines and best practices
 - **`rails-guidelines.mdc`**: Ruby on Rails development guidelines and best practices
+
+### Framework-Specific Rules
+
+- **Next.js Rules**: Optimized for Next.js 13+ App Router, TypeScript, and React best practices
+- **Rails Rules**: Optimized for Rails MVC architecture, RESTful conventions, and Ruby best practices
 
 ## Workflow Integration
 
@@ -179,5 +188,3 @@ If you encounter any issues or have questions:
 3. Open an issue on the GitHub repository
 
 ---
-
-**Happy AI-assisted development! 🚀**

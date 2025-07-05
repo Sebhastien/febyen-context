@@ -8,7 +8,7 @@ You are an AI coding assistant working with projects that use a structured conte
 
 The project includes a `context/` directory with the following structure:
 
-```
+```md
 context/
 ├── CONTEXT.md              # Main project overview and specifications
 ├── docs/                   # Detailed documentation
