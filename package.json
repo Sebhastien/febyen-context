@@ -1,0 +1,44 @@
+{
+    "name": "febyen-context",
+    "version": "0.0.1",
+    "description": "A CLI tool to initialize project context for AI-assisted development",
+    "main": "index.js",
+    "bin": {
+        "febyen-context": "./bin/febyen-context.js"
+    },
+    "scripts": {
+        "start": "node ./bin/febyen-context.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "cli",
+        "context",
+        "ai",
+        "development",
+        "project-setup",
+        "nextjs",
+        "rails"
+    ],
+    "author": "Sebhastien Gibossé",
+    "license": "MIT",
+    "dependencies": {
+        "commander": "^11.1.0",
+        "chalk": "^4.1.2",
+        "inquirer": "^8.2.6",
+        "fs-extra": "^11.1.1"
+    },
+    "devDependencies": {
+        "@types/node": "^20.0.0"
+    },
+    "engines": {
+        "node": ">=14.0.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/sebhastien/febyen-context.git"
+    },
+    "bugs": {
+        "url": "https://github.com/sebhastien/febyen-context/issues"
+    },
+    "homepage": "https://github.com/sebhastien/febyen-context#readme"
+}
