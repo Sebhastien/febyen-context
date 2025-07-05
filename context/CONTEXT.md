@@ -2,65 +2,129 @@
 
 ## Project Overview
 
-- **Project Name**: BidStream v2
-- **Version**: 2.0.0
-- **Last Updated**: 2024-12-19
-- **Status**: Active
+- **Project Name**: febyen-context
+- **Version**: 1.0.0
+- **Last Updated**: 2024-07-05
+- **Status**: Active Development
 
 ## Purpose & Vision
 
-BidStream v2 is a comprehensive bidding and auction management platform designed to streamline the process of creating, managing, and participating in auctions. The platform aims to provide a modern, user-friendly interface for both auction creators and bidders, with robust backend systems to handle real-time bidding, payment processing, and auction management.
+febyen-context is a CLI tool designed to initialize project context for AI-assisted development. The tool creates a structured context system that helps AI assistants understand projects and provide more effective development support. It supports multiple frameworks including Next.js and Ruby on Rails, with framework-specific templates, rules, and guidelines.
 
 ## Key Stakeholders
 
-- **Product Owner**: [To be defined]
-- **Technical Lead**: [To be defined]
+- **Product Owner**: Sebastien
+- **Technical Lead**: Sebastien
 - **Target Users**:
-  - Auction creators (businesses, individuals, organizations)
-  - Bidders (individuals and businesses)
-  - Auction administrators and moderators
+  - Developers using AI assistants for development
+  - Teams working on Next.js projects
+  - Teams working on Ruby on Rails projects
+  - Developers seeking structured project context
 
 ## Technology Stack
 
-- **Frontend**: [To be defined - React/Vue/Angular]
-- **Backend**: [To be defined - Node.js/Python/Java]
-- **Database**: [To be defined - PostgreSQL/MongoDB]
-- **Infrastructure**: [To be defined - AWS/Azure/GCP]
-- **Testing**: [To be defined - Jest/Pytest]
+- **CLI Framework**: Node.js with Commander.js
+- **Package Manager**: npm
+- **Dependencies**:
+  - commander (CLI argument parsing)
+  - chalk (colored console output)
+  - inquirer (interactive prompts)
+  - fs-extra (enhanced file system operations)
+- **Testing**: Jest (planned)
+- **Documentation**: Markdown
 
 ## Architecture Overview
 
-The system will follow a modern microservices architecture with:
+The CLI tool follows a modular architecture with:
 
-- RESTful API backend
-- Real-time bidding capabilities (WebSocket)
-- Secure payment processing
-- User authentication and authorization
-- File upload and management system
-- Notification system
+- **Core CLI Logic**: Command parsing and execution
+- **Template System**: Framework-specific templates and rules
+- **Context Generation**: Dynamic project context creation
+- **File Management**: Structured directory and file creation
+
+## Project Structure
+
+```
+febyen-context/
+├── bin/
+│   └── febyen-context.js          # CLI entry point
+├── context/                       # Template context system
+│   ├── CONTEXT.md                 # This file
+│   ├── docs/                      # Documentation
+│   │   └── design/               # Design assets
+│   ├── features/                  # Feature management
+│   │   ├── active/               # Currently developing
+│   │   ├── planned/              # Planned features
+│   │   ├── completed/            # Completed features
+│   │   ├── archived/             # Archived features
+│   │   └── ROADMAP.md            # Project roadmap
+│   └── rules/                     # Development rules
+│       ├── create-prd.md         # PRD creation guidelines
+│       ├── generate-tasks.md     # Task generation (generic)
+│       ├── generate-tasks-nextjs.md # Task generation (Next.js)
+│       ├── generate-tasks-rails.md # Task generation (Rails)
+│       ├── process-task-list.md  # Task processing (generic)
+│       ├── process-task-list-nextjs.md # Task processing (Next.js)
+│       └── process-task-list-rails.md # Task processing (Rails)
+├── package.json                   # npm package configuration
+├── README.md                      # Project documentation
+├── Claude.md                      # AI assistant instructions
+└── LICENSE                        # MIT License
+```
 
 ## Development Workflow
 
 - **Branch Strategy**: Git Flow (main, develop, feature branches)
 - **Code Review**: Pull request required for all changes
-- **Deployment**: CI/CD pipeline with staging and production environments
+- **Testing**: Unit tests for CLI functionality
+- **Publishing**: npm publish for distribution
 
 ## Current Status
 
-- **Active Features**: [To be updated as development progresses]
-- **Completed Features**: [To be updated as features are completed]
-- **Known Issues**: [To be updated as issues are identified]
+- **Active Features**:
+  - CLI tool with Next.js and Rails support
+  - Framework-specific templates and rules
+  - Dynamic context generation
+  - Interactive project setup
+- **Completed Features**:
+  - Basic CLI functionality
+  - Template system
+  - Framework detection
+- **Known Issues**: None currently identified
+
+## Framework Support
+
+### Next.js Projects
+
+- App Router structure support
+- TypeScript guidelines
+- React Testing Library integration
+- Next.js best practices
+
+### Ruby on Rails Projects
+
+- MVC architecture support
+- Rails conventions
+- RSpec testing integration
+- Rails best practices
+
+### Generic Projects
+
+- Flexible structure for other frameworks
+- Basic development guidelines
+- Extensible template system
 
 ## Related Documents
 
-- [Roadmap](./ROADMAP.md)
-- [API Documentation](./TECHNICAL/api-documentation.md)
-- [Design System](./DESIGN/design-system.md)
-- [Feature Directory](./FEATURES/README.md)
+- [Roadmap](./features/ROADMAP.md)
+- [README](../README.md) - Main project documentation
+- [Claude.md](../Claude.md) - AI assistant instructions
 
 ## Next Steps
 
-1. Define detailed technical requirements
-2. Set up development environment
-3. Create initial project structure
-4. Begin feature development based on roadmap
+1. Add unit tests for CLI functionality
+2. Add support for additional frameworks (React, Vue, etc.)
+3. Implement template customization options
+4. Add validation for project names and paths
+5. Create documentation for extending the tool
+6. Publish to npm registry

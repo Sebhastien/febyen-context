@@ -71,15 +71,20 @@ my-project/
 │   │   └── archived/         # Deprecated features
 │   ├── templates/            # AI development templates
 │   │   ├── create-prd.mdc    # Product Requirements Document template
-│   │   ├── generate-tasks.mdc # Task generation template
-│   │   ├── process-task-list.mdc # Task processing template
+│   │   ├── generate-tasks.mdc # Task generation template (framework-specific)
+│   │   ├── process-task-list.mdc # Task processing template (framework-specific)
 │   │   ├── nextjs-guidelines.mdc # Next.js specific guidelines (if --next)
 │   │   └── rails-guidelines.mdc # Rails specific guidelines (if --rails)
 │   ├── rules/                # Framework-specific development rules
 │   │   ├── create-prd.md     # PRD creation guidelines
 │   │   ├── generate-tasks.md # Task generation rules (framework-specific)
 │   │   └── process-task-list.md # Task processing rules (framework-specific)
-│   └── ROADMAP.md            # Project roadmap
+│   └── features/             # Feature management
+│       ├── active/           # Currently being developed
+│       ├── planned/          # Planned for future development
+│       ├── completed/        # Finished features
+│       ├── archived/         # Deprecated features
+│       └── ROADMAP.md        # Project roadmap
 ├── Claude.md                  # AI assistant instructions
 └── README.md                 # Project-specific README
 ```
@@ -102,21 +107,30 @@ my-project/
 
 ## Templates Included
 
-### Core Templates
-
-- **`create-prd.mdc`**: Template for creating Product Requirements Documents
-- **`generate-tasks.mdc`**: Template for breaking down features into tasks (framework-specific)
-- **`process-task-list.mdc`**: Template for processing and organizing task lists (framework-specific)
-
 ### Framework-Specific Templates
 
-- **`nextjs-guidelines.mdc`**: Next.js development guidelines and best practices
-- **`rails-guidelines.mdc`**: Ruby on Rails development guidelines and best practices
+- **`nextjs-guidelines.md`**: Next.js development guidelines and best practices
+- **`rails-guidelines.md`**: Ruby on Rails development guidelines and best practices
 
 ### Framework-Specific Rules
 
 - **Next.js Rules**: Optimized for Next.js 13+ App Router, TypeScript, and React best practices
 - **Rails Rules**: Optimized for Rails MVC architecture, RESTful conventions, and Ruby best practices
+
+### Rules System
+
+The rules system provides framework-specific development guidelines:
+
+- **`create-prd.md`**: Guidelines for creating Product Requirements Documents
+- **`generate-tasks.md`**: Framework-specific task generation rules with appropriate file paths and commands
+- **`process-task-list.md`**: Framework-specific task processing rules with testing and development commands
+
+Each framework has optimized rules that include:
+
+- Correct file structure and naming conventions
+- Framework-specific testing commands (`npm test` vs `bin/rails test`)
+- Development server commands (`npm run dev` vs `bin/rails server`)
+- Best practices and patterns for each technology stack
 
 ## Workflow Integration
 
@@ -167,6 +181,31 @@ rails db:create
 rails server
 ```
 
+## Development Status
+
+### Current Version: 1.0.0
+
+**✅ Completed Features:**
+
+- CLI tool with interactive setup
+- Next.js and Rails framework support
+- Framework-specific templates and rules
+- Dynamic context generation
+- Project-specific Claude.md instructions
+
+**🚧 In Development:**
+
+- Unit tests for CLI functionality
+- Additional framework support (React, Vue, etc.)
+- Template customization options
+
+**📋 Planned Features:**
+
+- Validation for project names and paths
+- Custom template support
+- Plugin system for extending functionality
+- Integration with popular IDEs
+
 ## Contributing
 
 This tool is designed to be extensible. You can:
@@ -174,6 +213,7 @@ This tool is designed to be extensible. You can:
 1. **Add New Templates**: Create new `.mdc` templates in the `context/templates/` directory
 2. **Customize Context Structure**: Modify the context directory structure to fit your needs
 3. **Add Framework Support**: Extend the CLI to support additional frameworks
+4. **Improve Rules**: Enhance framework-specific rules and guidelines
 
 ## License
 
