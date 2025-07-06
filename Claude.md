@@ -11,19 +11,27 @@ The project includes a `context/` directory with the following structure:
 ```md
 context/
 ├── CONTEXT.md              # Main project overview and specifications
-├── docs/                   # Detailed documentation
-│   ├── design/            # Design system and mockups
-│   └── technical/         # Technical documentation
-├── features/              # Feature management
-│   ├── active/           # Currently being developed
-│   ├── planned/          # Planned for future development
-│   ├── completed/        # Finished features
-│   └── archived/         # Deprecated features
-├── templates/            # AI development templates
-│   ├── create-prd.mdc    # Product Requirements Document template
-│   ├── generate-tasks.mdc # Task generation template
-│   └── process-task-list.mdc # Task processing template
-└── ROADMAP.md            # Project roadmap and milestones
+├── setup.md                # Interview guide for project setup
+├── architecture/           # Architecture documentation
+│   └── ARCHITECTURE.md     # System architecture overview
+├── design/                 # Design system and assets
+│   ├── DESIGN_SYSTEM.md    # Design system documentation
+│   ├── design-system.json  # Design system specification
+│   └── mockups/            # UI mockups and screenshots
+├── features/               # Feature management
+│   ├── active/             # Currently being developed
+│   ├── planned/            # Planned for future development
+│   ├── completed/          # Finished features
+│   ├── archived/           # Deprecated features
+│   └── ROADMAP.md          # Project roadmap and milestones
+└── rules/                  # Development rules and guidelines
+    ├── create-prd.md       # PRD creation guidelines
+    ├── generate-tasks.md   # Task generation (generic)
+    ├── generate-tasks-nextjs.md # Task generation (Next.js)
+    ├── generate-tasks-rails.md # Task generation (Rails)
+    ├── process-task-list.md # Task processing (generic)
+    ├── process-task-list-nextjs.md # Task processing (Next.js)
+    └── process-task-list-rails.md # Task processing (Rails)
 ```
 
 ## Your Role and Responsibilities
@@ -33,30 +41,43 @@ context/
 - **Always read `context/CONTEXT.md` first** when starting work on any project
 - Understand the project's purpose, technology stack, and current status
 - Reference the roadmap to understand priorities and timelines
+- **Update all context files** when gathering new project information
 
-### 2. Feature Development Workflow
+### 2. Project Setup and Interview Process
+
+When helping users set up a new project or gather requirements:
+
+1. **Follow the interview guide** in `context/setup.md` to conduct structured interviews
+2. **Ask comprehensive questions** about project goals, technology stack, and requirements
+3. **Populate all context files** with gathered information, replacing all placeholder values
+4. **Update files in priority order**: CONTEXT.md → design-system.json → DESIGN_SYSTEM.md → ARCHITECTURE.md → ROADMAP.md
+
+### 3. Feature Development Workflow
 
 When working on features:
 
 1. **Check the features directory** to understand what's active, planned, or completed
-2. **Use the appropriate templates** from `context/templates/` for consistency
+2. **Use the appropriate rules** from `context/rules/` for consistency
 3. **Update documentation** as you make changes
 4. **Follow the project's established patterns** and conventions
 
-### 3. Template Usage
+### 4. Rules Usage
 
-The project includes several `.mdc` templates that provide structured guidance:
+The project includes several rule files that provide structured guidance:
 
-- **`create-prd.mdc`**: Use when creating Product Requirements Documents
-- **`generate-tasks.mdc`**: Use when breaking down features into tasks
-- **`process-task-list.mdc`**: Use when processing and organizing task lists
+- **`create-prd.md`**: Use when creating Product Requirements Documents
+- **`generate-tasks.md`**: Use when breaking down features into tasks (generic)
+- **`generate-tasks-[framework].md`**: Use when breaking down features into tasks (framework-specific)
+- **`process-task-list.md`**: Use when processing and organizing task lists (generic)
+- **`process-task-list-[framework].md`**: Use when processing and organizing task lists (framework-specific)
 
-### 4. Documentation Standards
+### 5. Documentation Standards
 
 - Keep all documentation in Markdown format
 - Update `CONTEXT.md` when making significant architectural changes
 - Document new features in the appropriate features directory
 - Maintain consistency with existing documentation style
+- **Update all context files** when project information changes
 
 ## Technology Stack Guidelines
 
@@ -125,10 +146,12 @@ If you encounter:
 ## Best Practices
 
 1. **Always start with context**: Read `CONTEXT.md` before any development work
-2. **Use templates consistently**: Follow the provided `.mdc` templates for structured work
-3. **Update documentation**: Keep the context system current as the project evolves
+2. **Use rules consistently**: Follow the provided rule files for structured work
+3. **Update all context files**: Keep the entire context system current as the project evolves
 4. **Maintain consistency**: Follow established patterns and conventions
 5. **Communicate clearly**: Provide context for your decisions and recommendations
+6. **Conduct thorough interviews**: Use `setup.md` to gather comprehensive project information
+7. **Replace all placeholders**: Ensure no placeholder values remain in context files
 
 ## Project-Specific Instructions
 
@@ -136,18 +159,31 @@ If you encounter:
 
 When initializing a new project with this context system:
 
-1. Review the `context/` directory structure
-2. Update `CONTEXT.md` with project-specific information
-3. Create appropriate feature entries
-4. Set up the development environment according to the technology stack
+1. **Follow the interview process** in `context/setup.md` to gather comprehensive project information
+2. **Update all context files** with gathered information, replacing all placeholder values
+3. **Populate files in priority order**: CONTEXT.md → design-system.json → DESIGN_SYSTEM.md → ARCHITECTURE.md → ROADMAP.md
+4. **Update framework-specific rules** in the `rules/` directory based on the chosen technology stack
+5. **Create appropriate feature entries** in the features directory
+6. **Set up the development environment** according to the technology stack
 
 ### For Existing Projects
 
 When working on existing projects:
 
-1. Review the current state in `CONTEXT.md`
-2. Check active features and their status
-3. Follow established patterns and conventions
-4. Update documentation as you make changes
+1. **Review the current state** in `CONTEXT.md` and all other context files
+2. **Check active features** and their status in the features directory
+3. **Follow established patterns** and conventions from the context system
+4. **Update all context files** as you make changes to keep them current
+5. **Use appropriate rule files** for framework-specific guidance
+
+### Context File Update Requirements
+
+**CRITICAL**: When updating any context file, ensure you:
+
+1. **Replace ALL placeholder values** (anything in `[BRACKETS]`) with actual project information
+2. **Update related files** when making changes that affect multiple areas
+3. **Maintain consistency** across all context files
+4. **Validate completeness** by checking that no placeholder values remain
+5. **Update framework-specific rules** when technology stack changes
 
 Remember: The context system is designed to make AI-assisted development more effective and consistent. Always reference it and keep it updated!

@@ -170,6 +170,9 @@ async function createProjectContext(projectDir, projectName, projectType) {
 
     // Create project-specific rules
     await createProjectRules(contextDir, projectType);
+
+    // Create design system files
+    await createDesignSystem(contextDir, projectType);
 }
 
 async function createNextJSTemplates(contextDir) {
@@ -450,6 +453,258 @@ Remember: The context system is designed to make AI-assisted development more ef
 `;
 
     await fs.writeFile(path.join(projectDir, 'Claude.md'), claudeContent);
+}
+
+async function createDesignSystem(contextDir, projectType) {
+    const designDir = path.join(contextDir, 'design');
+    await fs.ensureDir(designDir);
+    await fs.ensureDir(path.join(designDir, 'mockups'));
+
+    // Create design system documentation
+    const designSystemContent = `# Design System Documentation
+
+## Overview
+
+This design system provides a comprehensive set of design tokens, component patterns, and guidelines for maintaining consistent UI design across your ${projectType === 'next' ? 'Next.js' : projectType === 'rails' ? 'Rails' : ''} project. The system is optimized for use with AI assistants and Tailwind CSS implementation.
+
+## Structure
+
+- \`design-system.json\` - Complete design system specification in JSON format
+- \`mockups/\` - UI mockups and screenshots for reference
+- \`design-system.md\` - This documentation file
+
+## How to Use with AI Assistants
+
+### 1. Initial Design System Creation
+
+When creating a new project, use this prompt with your UI mockups:
+
+\`\`\`
+Create a comprehensive JSON design system based on these dashboard UI screenshots. The system should capture all visual patterns, component structures, and design tokens that would enable an AI assistant (like Cursor) to consistently replicate this design style using Tailwind CSS.
+
+Context:
+- The implementation will use Tailwind CSS for styling
+- The JSON will be used as a reference document when instructing AI to build components
+- The goal is to maintain perfect design consistency across all new components
+
+Requirements:
+1. Extract and organize all design tokens (colors, typography, spacing, shadows, etc.) with their Tailwind equivalents
+2. Document component patterns and their structure (cards, buttons, inputs, charts, tables, etc.)
+3. Include layout patterns and responsive grid systems
+4. Capture interaction states (hover, active, focus) and animations
+
+Do NOT include:
+- Specific text content or data from the screenshots
+- User-specific information
+
+Format the output as a well-structured JSON that can be easily referenced and parsed, with clear naming conventions that map to Tailwind utility classes where applicable.
+\`\`\`
+
+### 2. Component Development
+
+When building new components, reference the design system by:
+
+1. **Review the design tokens** in \`design-system.json\`
+2. **Check existing component patterns** for consistency
+3. **Use the provided Tailwind classes** for styling
+4. **Follow the established naming conventions**
+
+### 3. AI Assistant Instructions
+
+When working with AI assistants, include these instructions:
+
+\`\`\`
+Please reference the design system in context/design/design-system.json when building components. Follow these guidelines:
+
+1. Use the exact color values and Tailwind classes specified in the design tokens
+2. Follow the component patterns and structure documented in the system
+3. Maintain consistent spacing using the defined spacing scale
+4. Apply the documented interaction states and animations
+5. Use the typography scale for all text elements
+6. Follow the responsive breakpoints and grid system
+
+The design system is the single source of truth for all visual design decisions.
+\`\`\`
+
+## Framework-Specific Guidelines
+
+${projectType === 'next' ? `
+### Next.js Implementation
+
+- Use CSS Modules or styled-components for component styling
+- Implement design tokens as CSS custom properties
+- Follow Next.js 13+ App Router conventions
+- Use TypeScript for type safety in component props
+- Implement proper loading states and error boundaries
+
+### File Structure
+\`\`\`
+src/
+├── styles/
+│   ├── design-tokens.css    # CSS custom properties
+│   ├── components.css       # Component-specific styles
+│   └── globals.css          # Global styles
+├── components/
+│   ├── ui/                  # Reusable UI components
+│   └── layout/              # Layout components
+└── app/
+    └── globals.css          # Tailwind imports
+\`\`\`
+` : projectType === 'rails' ? `
+### Rails Implementation
+
+- Use Tailwind CSS with Rails asset pipeline
+- Implement design tokens in \`app/assets/stylesheets/\`
+- Follow Rails conventions for component organization
+- Use Stimulus for interactive components
+- Implement proper form styling and validation states
+
+### File Structure
+\`\`\`
+app/
+├── assets/
+│   └── stylesheets/
+│       ├── design-tokens.css    # CSS custom properties
+│       ├── components.css       # Component-specific styles
+│       └── application.css      # Main stylesheet
+├── javascript/
+│   └── controllers/             # Stimulus controllers
+└── views/
+    ├── components/              # View components
+    └── layouts/                 # Layout templates
+\`\`\`
+` : `
+### Generic Implementation
+
+- Use Tailwind CSS for styling
+- Implement design tokens as CSS custom properties
+- Follow component-based architecture
+- Use modern CSS features for responsive design
+- Implement proper accessibility features
+
+### File Structure
+\`\`\`
+src/
+├── styles/
+│   ├── design-tokens.css    # CSS custom properties
+│   ├── components.css       # Component-specific styles
+│   └── utilities.css        # Utility classes
+├── components/
+│   ├── ui/                  # Reusable UI components
+│   └── layout/              # Layout components
+└── design-system/
+    ├── design-system.json   # Design system specification
+    └── mockups/             # Reference mockups
+\`\`\`
+`}
+
+## Next Steps
+
+1. **Add your UI mockups** to the \`mockups/\` directory
+2. **Generate design system JSON** using the provided prompt
+3. **Implement design tokens** in your CSS/styling system
+4. **Create component library** following the documented patterns
+5. **Test consistency** across all components and pages
+
+## Resources
+
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+- [Design System Best Practices](https://www.designsystems.com/)
+- [Accessibility Guidelines](https://www.w3.org/WAI/WCAG21/quickref/)
+- [CSS Custom Properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties)
+`;
+
+    await fs.writeFile(path.join(designDir, 'design-system.md'), designSystemContent);
+
+    // Create a placeholder design system JSON
+    const designSystemJSON = {
+        "name": `${projectType === 'next' ? 'Next.js' : projectType === 'rails' ? 'Rails' : 'Generic'} Design System`,
+        "version": "1.0.0",
+        "description": "Design system for consistent UI development",
+        "framework": projectType === 'next' ? 'Next.js' : projectType === 'rails' ? 'Rails' : 'Generic',
+        "styling": "Tailwind CSS",
+        "designTokens": {
+            "colors": {
+                "primary": {
+                    "50": "#eff6ff",
+                    "500": "#3b82f6",
+                    "900": "#1e3a8a"
+                },
+                "gray": {
+                    "50": "#f9fafb",
+                    "500": "#6b7280",
+                    "900": "#111827"
+                }
+            },
+            "typography": {
+                "fontFamily": {
+                    "sans": ["Inter", "system-ui", "sans-serif"],
+                    "mono": ["JetBrains Mono", "monospace"]
+                },
+                "fontSize": {
+                    "xs": "0.75rem",
+                    "sm": "0.875rem",
+                    "base": "1rem",
+                    "lg": "1.125rem",
+                    "xl": "1.25rem"
+                }
+            },
+            "spacing": {
+                "xs": "0.25rem",
+                "sm": "0.5rem",
+                "md": "1rem",
+                "lg": "1.5rem",
+                "xl": "2rem"
+            }
+        },
+        "components": {
+            "button": {
+                "variants": ["primary", "secondary", "outline"],
+                "sizes": ["sm", "md", "lg"]
+            },
+            "card": {
+                "variants": ["default", "elevated", "outlined"]
+            }
+        },
+        "layout": {
+            "breakpoints": {
+                "sm": "640px",
+                "md": "768px",
+                "lg": "1024px",
+                "xl": "1280px"
+            }
+        }
+    };
+
+    await fs.writeFile(path.join(designDir, 'design-system.json'), JSON.stringify(designSystemJSON, null, 2));
+
+    // Create a README for the mockups directory
+    const mockupsReadme = `# Mockups Directory
+
+This directory contains UI mockups and screenshots for your project.
+
+## Usage
+
+1. **Add your mockups** - Place UI screenshots, wireframes, and design mockups here
+2. **Reference in development** - Use these as visual guides when building components
+3. **Generate design system** - Use the mockups with the design system prompt to create \`design-system.json\`
+
+## File Organization
+
+- \`screenshots/\` - UI screenshots and mockups
+- \`wireframes/\` - Low-fidelity wireframes
+- \`components/\` - Individual component mockups
+- \`layouts/\` - Page layout mockups
+
+## Best Practices
+
+- Use descriptive filenames (e.g., \`dashboard-overview.png\`, \`user-profile-form.png\`)
+- Include multiple states (default, hover, active, error)
+- Show responsive variations when applicable
+- Keep files organized in subdirectories by feature or component type
+`;
+
+    await fs.writeFile(path.join(designDir, 'mockups', 'README.md'), mockupsReadme);
 }
 
 async function createProjectRules(contextDir, projectType) {

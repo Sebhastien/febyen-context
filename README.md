@@ -61,32 +61,28 @@ When you run `febyen-context`, it creates a structured project with the followin
 my-project/
 ├── context/
 │   ├── CONTEXT.md              # Main project overview
-│   ├── docs/                   # Detailed documentation
-│   │   ├── design/            # Design system and mockups
-│   │   └── technical/         # Technical documentation
-│   ├── features/              # Feature management
-│   │   ├── active/           # Currently being developed
-│   │   ├── planned/          # Planned for future development
-│   │   ├── completed/        # Finished features
-│   │   └── archived/         # Deprecated features
-│   ├── templates/            # AI development templates
-│   │   ├── create-prd.mdc    # Product Requirements Document template
-│   │   ├── generate-tasks.mdc # Task generation template (framework-specific)
-│   │   ├── process-task-list.mdc # Task processing template (framework-specific)
-│   │   ├── nextjs-guidelines.mdc # Next.js specific guidelines (if --next)
-│   │   └── rails-guidelines.mdc # Rails specific guidelines (if --rails)
-│   ├── rules/                # Framework-specific development rules
-│   │   ├── create-prd.md     # PRD creation guidelines
-│   │   ├── generate-tasks.md # Task generation rules (framework-specific)
-│   │   └── process-task-list.md # Task processing rules (framework-specific)
-│   └── features/             # Feature management
-│       ├── active/           # Currently being developed
-│       ├── planned/          # Planned for future development
-│       ├── completed/        # Finished features
-│       ├── archived/         # Deprecated features
-│       └── ROADMAP.md        # Project roadmap
-├── Claude.md                  # AI assistant instructions
-└── README.md                 # Project-specific README
+│   ├── architecture/           # Architecture documentation
+│   │   └── ARCHITECTURE.md     # System architecture overview
+│   ├── design/                 # Design system and assets
+│   │   ├── DESIGN_SYSTEM.md    # Design system documentation
+│   │   ├── design-system.json  # Design system specification
+│   │   └── mockups/            # UI mockups and screenshots
+│   ├── features/               # Feature management
+│   │   ├── active/             # Currently being developed
+│   │   ├── planned/            # Planned for future development
+│   │   ├── completed/          # Finished features
+│   │   ├── archived/           # Deprecated features
+│   │   └── ROADMAP.md          # Project roadmap
+│   └── rules/                  # Framework-specific development rules
+│       ├── create-prd.md       # PRD creation guidelines
+│       ├── generate-tasks.md   # Task generation rules (generic)
+│       ├── generate-tasks-nextjs.md # Task generation rules (Next.js)
+│       ├── generate-tasks-rails.md # Task generation rules (Rails)
+│       ├── process-task-list.md # Task processing rules (generic)
+│       ├── process-task-list-nextjs.md # Task processing rules (Next.js)
+│       └── process-task-list-rails.md # Task processing rules (Rails)
+├── Claude.md                   # AI assistant instructions
+└── README.md                  # Project-specific README
 ```
 
 ## Context System Benefits
@@ -107,23 +103,24 @@ my-project/
 
 ## Templates Included
 
-### Framework-Specific Templates
-
-- **`nextjs-guidelines.md`**: Next.js development guidelines and best practices
-- **`rails-guidelines.md`**: Ruby on Rails development guidelines and best practices
-
 ### Framework-Specific Rules
 
-- **Next.js Rules**: Optimized for Next.js 13+ App Router, TypeScript, and React best practices
-- **Rails Rules**: Optimized for Rails MVC architecture, RESTful conventions, and Ruby best practices
+- **`generate-tasks-nextjs.md`**: Next.js task generation guidelines and best practices
+- **`generate-tasks-rails.md`**: Ruby on Rails task generation guidelines and best practices
+- **`process-task-list-nextjs.md`**: Next.js task processing guidelines and best practices
+- **`process-task-list-rails.md`**: Ruby on Rails task processing guidelines and best practices
 
 ### Rules System
 
 The rules system provides framework-specific development guidelines:
 
 - **`create-prd.md`**: Guidelines for creating Product Requirements Documents
-- **`generate-tasks.md`**: Framework-specific task generation rules with appropriate file paths and commands
-- **`process-task-list.md`**: Framework-specific task processing rules with testing and development commands
+- **`generate-tasks.md`**: Generic task generation rules
+- **`generate-tasks-nextjs.md`**: Next.js-specific task generation rules with appropriate file paths and commands
+- **`generate-tasks-rails.md`**: Rails-specific task generation rules with appropriate file paths and commands
+- **`process-task-list.md`**: Generic task processing rules
+- **`process-task-list-nextjs.md`**: Next.js-specific task processing rules with testing and development commands
+- **`process-task-list-rails.md`**: Rails-specific task processing rules with testing and development commands
 
 Each framework has optimized rules that include:
 
@@ -131,6 +128,13 @@ Each framework has optimized rules that include:
 - Framework-specific testing commands (`npm test` vs `bin/rails test`)
 - Development server commands (`npm run dev` vs `bin/rails server`)
 - Best practices and patterns for each technology stack
+
+### Design System
+
+- **Design System JSON**: Framework-specific design tokens and component patterns
+- **Design Documentation**: Comprehensive guidelines for AI-assisted design
+- **Mockups Directory**: Organized structure for UI mockups and screenshots
+- **AI Integration**: Optimized prompts for design system generation
 
 ## Workflow Integration
 
@@ -149,7 +153,7 @@ cd my-project
 
 ### 3. AI-Assisted Development
 
-- Use templates in `context/templates/` for structured work
+- Use rules in `context/rules/` for structured work
 - Update documentation as you develop
 - Keep the context system current with project changes
 
@@ -210,7 +214,7 @@ rails server
 
 This tool is designed to be extensible. You can:
 
-1. **Add New Templates**: Create new `.mdc` templates in the `context/templates/` directory
+1. **Add New Rules**: Create new rule files in the `context/rules/` directory
 2. **Customize Context Structure**: Modify the context directory structure to fit your needs
 3. **Add Framework Support**: Extend the CLI to support additional frameworks
 4. **Improve Rules**: Enhance framework-specific rules and guidelines

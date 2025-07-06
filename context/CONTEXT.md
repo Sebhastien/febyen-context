@@ -2,117 +2,106 @@
 
 ## Project Overview
 
-- **Project Name**: febyen-context
-- **Version**: 1.0.0
-- **Last Updated**: 2024-07-05
-- **Status**: Active Development
+- **Project Name**: [PROJECT_NAME]
+- **Version**: [VERSION]
+- **Last Updated**: [LAST_UPDATED]
+- **Status**: [PROJECT_STATUS]
 
 ## Purpose & Vision
 
-febyen-context is a CLI tool designed to initialize project context for AI-assisted development. The tool creates a structured context system that helps AI assistants understand projects and provide more effective development support. It supports multiple frameworks including Next.js and Ruby on Rails, with framework-specific templates, rules, and guidelines.
+[PROJECT_DESCRIPTION]
+
+[PROJECT_GOALS]
+
+[PROJECT_VISION]
 
 ## Key Stakeholders
 
-- **Product Owner**: Sebastien
-- **Technical Lead**: Sebastien
+- **Product Owner**: [PRODUCT_OWNER_NAME] <[PRODUCT_OWNER_EMAIL]>
+- **Technical Lead**: [TECHNICAL_LEAD_NAME] <[TECHNICAL_LEAD_EMAIL]>
 - **Target Users**:
-  - Developers using AI assistants for development
-  - Teams working on Next.js projects
-  - Teams working on Ruby on Rails projects
-  - Developers seeking structured project context
+  - [TARGET_USER_1]
+  - [TARGET_USER_2]
+  - [TARGET_USER_3]
 
 ## Technology Stack
 
-- **CLI Framework**: Node.js with Commander.js
-- **Package Manager**: npm
-- **Dependencies**:
-  - commander (CLI argument parsing)
-  - chalk (colored console output)
-  - inquirer (interactive prompts)
-  - fs-extra (enhanced file system operations)
-- **Testing**: Jest (planned)
-- **Documentation**: Markdown
+- **Frontend Framework**: [FRONTEND_FRAMEWORK]
+- **Backend Framework**: [BACKEND_FRAMEWORK]
+- **Database**: [DATABASE]
+- **Package Manager**: [PACKAGE_MANAGER]
+- **Dependencies**: [KEY_DEPENDENCIES]
+- **Testing**: [TESTING_FRAMEWORK]
+- **Documentation**: [DOCUMENTATION_FORMAT]
 
 ## Architecture Overview
 
-The CLI tool follows a modular architecture with:
+[ARCHITECTURE_DESCRIPTION]
 
-- **Core CLI Logic**: Command parsing and execution
-- **Template System**: Framework-specific templates and rules
-- **Context Generation**: Dynamic project context creation
-- **File Management**: Structured directory and file creation
+[SYSTEM_COMPONENTS]
+
+[INTEGRATION_POINTS]
 
 ## Project Structure
 
-```
-febyen-context/
-├── bin/
-│   └── febyen-context.js          # CLI entry point
-├── context/                       # Template context system
-│   ├── CONTEXT.md                 # This file
-│   ├── docs/                      # Documentation
-│   │   └── design/               # Design assets
-│   ├── features/                  # Feature management
-│   │   ├── active/               # Currently developing
-│   │   ├── planned/              # Planned features
-│   │   ├── completed/            # Completed features
-│   │   ├── archived/             # Archived features
-│   │   └── ROADMAP.md            # Project roadmap
-│   └── rules/                     # Development rules
-│       ├── create-prd.md         # PRD creation guidelines
-│       ├── generate-tasks.md     # Task generation (generic)
-│       ├── generate-tasks-nextjs.md # Task generation (Next.js)
-│       ├── generate-tasks-rails.md # Task generation (Rails)
-│       ├── process-task-list.md  # Task processing (generic)
-│       ├── process-task-list-nextjs.md # Task processing (Next.js)
-│       └── process-task-list-rails.md # Task processing (Rails)
-├── package.json                   # npm package configuration
-├── README.md                      # Project documentation
-├── Claude.md                      # AI assistant instructions
-└── LICENSE                        # MIT License
+```md
+[PROJECT_NAME]/
+├── [FRONTEND_DIRECTORY]/
+│   ├── [COMPONENTS_DIR]/
+│   ├── [PAGES_DIR]/
+│   ├── [STYLES_DIR]/
+│   └── [UTILS_DIR]/
+├── [BACKEND_DIRECTORY]/
+│   ├── [API_DIR]/
+│   ├── [MODELS_DIR]/
+│   ├── [SERVICES_DIR]/
+│   └── [CONFIG_DIR]/
+├── [DATABASE_DIRECTORY]/
+├── [DOCS_DIRECTORY]/
+├── [TESTS_DIRECTORY]/
+├── [DEPLOYMENT_DIRECTORY]/
+├── package.json
+├── README.md
+└── [CONFIG_FILES]
 ```
 
 ## Development Workflow
 
-- **Branch Strategy**: Git Flow (main, develop, feature branches)
-- **Code Review**: Pull request required for all changes
-- **Testing**: Unit tests for CLI functionality
-- **Publishing**: npm publish for distribution
+- **Branch Strategy**: [BRANCH_STRATEGY]
+- **Code Review**: [CODE_REVIEW_PROCESS]
+- **Testing**: [TESTING_STRATEGY]
+- **Deployment**: [DEPLOYMENT_PROCESS]
 
 ## Current Status
 
 - **Active Features**:
-  - CLI tool with Next.js and Rails support
-  - Framework-specific templates and rules
-  - Dynamic context generation
-  - Interactive project setup
+  - [ACTIVE_FEATURE_1]
+  - [ACTIVE_FEATURE_2]
+  - [ACTIVE_FEATURE_3]
 - **Completed Features**:
-  - Basic CLI functionality
-  - Template system
-  - Framework detection
-- **Known Issues**: None currently identified
+  - [COMPLETED_FEATURE_1]
+  - [COMPLETED_FEATURE_2]
+- **Known Issues**: [KNOWN_ISSUES]
 
 ## Framework Support
 
-### Next.js Projects
+### [FRAMEWORK_1] Projects
 
-- App Router structure support
-- TypeScript guidelines
-- React Testing Library integration
-- Next.js best practices
+- [FRAMEWORK_1_FEATURES]
+- [FRAMEWORK_1_BEST_PRACTICES]
+- [FRAMEWORK_1_TESTING]
 
-### Ruby on Rails Projects
+### [FRAMEWORK_2] Projects
 
-- MVC architecture support
-- Rails conventions
-- RSpec testing integration
-- Rails best practices
+- [FRAMEWORK_2_FEATURES]
+- [FRAMEWORK_2_BEST_PRACTICES]
+- [FRAMEWORK_2_TESTING]
 
 ### Generic Projects
 
-- Flexible structure for other frameworks
-- Basic development guidelines
-- Extensible template system
+- [GENERIC_FEATURES]
+- [GENERIC_GUIDELINES]
+- [GENERIC_EXTENSIBILITY]
 
 ## Related Documents
 
@@ -122,9 +111,9 @@ febyen-context/
 
 ## Next Steps
 
-1. Add unit tests for CLI functionality
-2. Add support for additional frameworks (React, Vue, etc.)
-3. Implement template customization options
-4. Add validation for project names and paths
-5. Create documentation for extending the tool
-6. Publish to npm registry
+1. [NEXT_STEP_1]
+2. [NEXT_STEP_2]
+3. [NEXT_STEP_3]
+4. [NEXT_STEP_4]
+5. [NEXT_STEP_5]
+6. [NEXT_STEP_6]
