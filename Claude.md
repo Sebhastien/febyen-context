@@ -47,19 +47,22 @@ context/
 
 When helping users set up a new project or gather requirements:
 
-1. **Follow the interview guide** in `context/setup.md` to conduct structured interviews
-2. **Ask comprehensive questions** about project goals, technology stack, and requirements
-3. **Populate all context files** with gathered information, replacing all placeholder values
-4. **Update files in priority order**: CONTEXT.md → design-system.json → DESIGN_SYSTEM.md → ARCHITECTURE.md → ROADMAP.md
+1. **ALWAYS start by asking about setup depth**: "Would you like a detailed setup (including architecture, design system, and comprehensive documentation) or a simple setup (basic project information only)?"
+2. **For simple setup**: Follow the Simple Setup Process section in `context/SETUP.md` and only update `context/CONTEXT.md` with essential information
+3. **For detailed setup**: Follow the Detailed Setup Process section in `context/SETUP.md` to conduct structured interviews
+4. **Ask comprehensive questions** about project goals, technology stack, and requirements
+5. **Populate all context files** with gathered information, replacing all placeholder values
+6. **Update files in priority order**: CONTEXT.md → design-system.json → DESIGN_SYSTEM.md → ARCHITECTURE.md → ROADMAP.md
 
 ### 3. Feature Development Workflow
 
 When working on features:
 
-1. **Check the features directory** to understand what's active, planned, or completed
+1. **Check the features directory** (`context/features/`) to understand what's active, planned, or completed
 2. **Use the appropriate rules** from `context/rules/` for consistency
 3. **Update documentation** as you make changes
 4. **Follow the project's established patterns** and conventions
+5. **ALWAYS create feature files in `context/features/` directory structure** (never in `docs/`)
 
 ### 4. Rules Usage
 
@@ -102,9 +105,10 @@ The project includes several rule files that provide structured guidance:
 
 ### When Starting Work
 
-1. Acknowledge the project context and current status
-2. Confirm understanding of the specific task or feature
-3. Reference relevant documentation or templates
+1. **ALWAYS ask about setup depth first** if starting a new project
+2. Acknowledge the project context and current status
+3. Confirm understanding of the specific task or feature
+4. Reference relevant documentation or templates
 
 ### When Making Decisions
 
@@ -145,13 +149,15 @@ If you encounter:
 
 ## Best Practices
 
-1. **Always start with context**: Read `CONTEXT.md` before any development work
-2. **Use rules consistently**: Follow the provided rule files for structured work
-3. **Update all context files**: Keep the entire context system current as the project evolves
-4. **Maintain consistency**: Follow established patterns and conventions
-5. **Communicate clearly**: Provide context for your decisions and recommendations
-6. **Conduct thorough interviews**: Use `setup.md` to gather comprehensive project information
-7. **Replace all placeholders**: Ensure no placeholder values remain in context files
+1. **ALWAYS start with setup depth question** if starting a new project
+2. **Always start with context**: Read `CONTEXT.md` before any development work
+3. **Use rules consistently**: Follow the provided rule files for structured work
+4. **Update all context files**: Keep the entire context system current as the project evolves
+5. **Maintain consistency**: Follow established patterns and conventions
+6. **Communicate clearly**: Provide context for your decisions and recommendations
+7. **Conduct thorough interviews**: Use the appropriate section in `context/SETUP.md` to gather project information
+8. **Replace all placeholders**: Ensure no placeholder values remain in context files
+9. **Use correct file paths**: Always reference `context/features/ROADMAP.md` and create features in `context/features/`
 
 ## Project-Specific Instructions
 
@@ -159,19 +165,21 @@ If you encounter:
 
 When initializing a new project with this context system:
 
-1. **Follow the interview process** in `context/setup.md` to gather comprehensive project information
-2. **Update all context files** with gathered information, replacing all placeholder values
-3. **Populate files in priority order**: CONTEXT.md → design-system.json → DESIGN_SYSTEM.md → ARCHITECTURE.md → ROADMAP.md
-4. **Update framework-specific rules** in the `rules/` directory based on the chosen technology stack
-5. **Create appropriate feature entries** in the features directory
-6. **Set up the development environment** according to the technology stack
+1. **ALWAYS ask about setup depth first**: "Would you like a detailed setup (including architecture, design system, and comprehensive documentation) or a simple setup (basic project information only)?"
+2. **For simple setup**: Only update `context/CONTEXT.md` with essential information
+3. **For detailed setup**: Follow the Detailed Setup Process section in `context/SETUP.md` to gather comprehensive project information
+4. **Update all context files** with gathered information, replacing all placeholder values
+5. **Populate files in priority order**: CONTEXT.md → design-system.json → DESIGN_SYSTEM.md → ARCHITECTURE.md → ROADMAP.md
+6. **Update framework-specific rules** in the `rules/` directory based on the chosen technology stack
+7. **Create appropriate feature entries** in the `context/features/` directory
+8. **Set up the development environment** according to the technology stack
 
 ### For Existing Projects
 
 When working on existing projects:
 
 1. **Review the current state** in `CONTEXT.md` and all other context files
-2. **Check active features** and their status in the features directory
+2. **Check active features** and their status in the `context/features/` directory
 3. **Follow established patterns** and conventions from the context system
 4. **Update all context files** as you make changes to keep them current
 5. **Use appropriate rule files** for framework-specific guidance
@@ -185,5 +193,6 @@ When working on existing projects:
 3. **Maintain consistency** across all context files
 4. **Validate completeness** by checking that no placeholder values remain
 5. **Update framework-specific rules** when technology stack changes
+6. **Use correct file paths**: Always reference `context/features/ROADMAP.md` and create features in `context/features/`
 
 Remember: The context system is designed to make AI-assisted development more effective and consistent. Always reference it and keep it updated!

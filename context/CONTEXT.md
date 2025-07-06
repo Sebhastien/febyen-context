@@ -74,13 +74,17 @@
 
 ## Current Status
 
-- **Active Features**:
+- **Active Features**: See `./features/active/` directory
   - [ACTIVE_FEATURE_1]
   - [ACTIVE_FEATURE_2]
   - [ACTIVE_FEATURE_3]
-- **Completed Features**:
+- **Planned Features**: See `./features/planned/` directory
+  - [PLANNED_FEATURE_1]
+  - [PLANNED_FEATURE_2]
+- **Completed Features**: See `./features/completed/` directory
   - [COMPLETED_FEATURE_1]
   - [COMPLETED_FEATURE_2]
+- **Archived Features**: See `./features/archived/` directory
 - **Known Issues**: [KNOWN_ISSUES]
 
 ## Framework Support
@@ -108,6 +112,7 @@
 - [Roadmap](./features/ROADMAP.md)
 - [README](../README.md) - Main project documentation
 - [Claude.md](../Claude.md) - AI assistant instructions
+- [Setup Guide](./SETUP.md) - Project setup interview guide
 
 ## Next Steps
 

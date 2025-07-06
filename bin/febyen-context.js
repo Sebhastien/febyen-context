@@ -173,6 +173,9 @@ async function createProjectContext(projectDir, projectName, projectType) {
 
     // Create design system files
     await createDesignSystem(contextDir, projectType);
+
+    // Ensure features directory structure exists
+    await ensureFeaturesStructure(contextDir);
 }
 
 async function createNextJSTemplates(contextDir) {
@@ -750,6 +753,76 @@ async function createProjectRules(contextDir, projectType) {
             path.join(rulesDir, 'process-task-list.md')
         );
     }
+}
+
+async function ensureFeaturesStructure(contextDir) {
+    const featuresDir = path.join(contextDir, 'features');
+
+    // Ensure features directory exists
+    await fs.ensureDir(featuresDir);
+
+    // Ensure all subdirectories exist
+    const subdirs = ['active', 'planned', 'completed', 'archived'];
+    for (const subdir of subdirs) {
+        await fs.ensureDir(path.join(featuresDir, subdir));
+
+        // Create a README file in each subdirectory
+        const readmeContent = `# ${subdir.charAt(0).toUpperCase() + subdir.slice(1)} Features
+
+This directory contains ${subdir} features for the project.
+
+## Usage
+
+${subdir === 'active' ? `
+- Place feature specifications for features currently being developed
+- Include detailed requirements, acceptance criteria, and technical specifications
+- Update status as development progresses
+` : subdir === 'planned' ? `
+- Place feature specifications for upcoming development
+- Include priority levels, estimated effort, and dependencies
+- Move to \`active/\` when development begins
+` : subdir === 'completed' ? `
+- Place completed feature documentation
+- Include final specifications, implementation notes, and lessons learned
+- Reference for future similar features
+` : `
+- Place deprecated or abandoned feature documentation
+- Include reasons for deprecation and migration notes
+- Reference for understanding project evolution
+`}
+
+## File Naming Convention
+
+Use descriptive filenames: \`feature-name.md\`
+
+## Template
+
+\`\`\`markdown
+# Feature Name
+
+## Description
+Brief description of the feature
+
+## Requirements
+- Requirement 1
+- Requirement 2
+
+## Acceptance Criteria
+- [ ] Criterion 1
+- [ ] Criterion 2
+
+## Technical Notes
+Any technical implementation details
+
+## Status
+${subdir === 'active' ? 'In Progress' : subdir === 'planned' ? 'Planned' : subdir === 'completed' ? 'Completed' : 'Archived'}
+\`\`\`
+`;
+
+        await fs.writeFile(path.join(featuresDir, subdir, 'README.md'), readmeContent);
+    }
+
+    console.log(chalk.green('✅ Features directory structure created'));
 }
 
 program.parse(); 

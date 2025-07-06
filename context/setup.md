@@ -2,9 +2,125 @@
 
 ## Purpose
 
-This guide helps AI assistants conduct structured interviews with users to gather comprehensive project information needed to populate the context system files. The goal is to collect all necessary details to create accurate and useful project documentation.
+This guide helps AI assistants conduct structured interviews with users to gather project information needed to populate the context system files. The goal is to collect necessary details to create accurate and useful project documentation.
 
-## Interview Process
+## Setup Depth Decision
+
+**CRITICAL FIRST STEP**: Before beginning any interview process, always ask:
+
+> "Would you like a detailed setup (including architecture, design system, and comprehensive documentation) or a simple setup (basic project information only)?"
+
+### Simple Setup
+
+- Only update `context/CONTEXT.md` with essential project information
+- Skip architecture, design system, and detailed documentation
+- Focus on basic project details: name, purpose, technology stack, target users
+- **Follow the Simple Setup Process section below**
+
+### Detailed Setup
+
+- Follow the full interview process outlined in the Detailed Setup Process section
+- Populate all context files with comprehensive information
+- Include architecture, design system, and detailed documentation
+- **Follow the Detailed Setup Process section below**
+
+---
+
+## Simple Setup Process
+
+### Essential Questions Only
+
+When a user chooses simple setup, ask only these essential questions:
+
+1. **"What is the name of your project?"**
+   - Use this to populate `[PROJECT_NAME]` in CONTEXT.md
+
+2. **"What type of application are you building?"**
+   - Web app, mobile app, desktop app, CLI tool, API, etc.
+
+3. **"What is the main purpose or problem this project solves?"**
+   - Use this to populate `[PROJECT_DESCRIPTION]` and `[PROJECT_GOALS]`
+
+4. **"Who are the target users of this application?"**
+   - Use this to populate `[TARGET_USER_1]`, `[TARGET_USER_2]`, `[TARGET_USER_3]`
+
+5. **"What frontend framework or technology will you use?"**
+   - React, Vue, Angular, Next.js, Svelte, vanilla JS, etc.
+   - Use this to populate `[FRONTEND_FRAMEWORK]`
+
+6. **"What backend technology will you use?"**
+   - Node.js, Python, Ruby, Java, .NET, etc.
+   - Use this to populate `[BACKEND_FRAMEWORK]`
+
+7. **"What type of database will you use?"**
+   - PostgreSQL, MySQL, MongoDB, SQLite, etc.
+   - Use this to populate `[DATABASE]`
+
+8. **"What are the most critical features for your MVP?"**
+   - Use this to populate `[ACTIVE_FEATURE_1]`, `[ACTIVE_FEATURE_2]`, etc.
+
+### File Updates for Simple Setup
+
+#### Only Update CONTEXT.md
+
+For simple setup, **ONLY** update the `context/CONTEXT.md` file with the essential information gathered above.
+
+**DO NOT** update or create:
+
+- `context/architecture/ARCHITECTURE.md`
+- `context/design/DESIGN_SYSTEM.md`
+- `context/design/design-system.json`
+- `context/features/ROADMAP.md`
+- Any other detailed documentation files
+
+#### CONTEXT.md Fields to Update
+
+Replace these placeholder values in `context/CONTEXT.md`:
+
+- `[PROJECT_NAME]`
+- `[PROJECT_DESCRIPTION]`
+- `[PROJECT_GOALS]`
+- `[FRONTEND_FRAMEWORK]`
+- `[BACKEND_FRAMEWORK]`
+- `[DATABASE]`
+- `[TARGET_USER_1]`, `[TARGET_USER_2]`, `[TARGET_USER_3]`
+- `[ACTIVE_FEATURE_1]`, `[ACTIVE_FEATURE_2]`, `[ACTIVE_FEATURE_3]`
+
+#### Leave Other Fields as Placeholders
+
+For simple setup, leave these fields as placeholders (they can be filled in later if needed):
+
+- `[PROJECT_VISION]`
+- `[PRODUCT_OWNER_NAME]`
+- `[TECHNICAL_LEAD_NAME]`
+- `[ARCHITECTURE_DESCRIPTION]`
+- `[SYSTEM_COMPONENTS]`
+- All roadmap and detailed planning fields
+
+### Next Steps After Simple Setup
+
+After completing the simple setup:
+
+1. **Confirm the basic information is correct**
+2. **Offer to upgrade to detailed setup later** if needed
+3. **Provide guidance on next development steps**
+4. **Remind the user they can always run the detailed setup process later**
+
+### When to Suggest Detailed Setup
+
+Consider suggesting detailed setup if the user mentions:
+
+- Complex architecture requirements
+- Multiple team members
+- Need for comprehensive documentation
+- Enterprise or production deployment
+- Integration with multiple systems
+- Design system requirements
+- Long-term project planning needs
+
+---
+
+## Detailed Setup Process
 
 ### Phase 1: Project Overview (5-10 minutes)
 
@@ -164,6 +280,15 @@ Gather information about the project team:
 4. **ARCHITECTURE.md** - Fill in technical architecture details
 5. **ROADMAP.md** - Create development timeline and feature roadmap
 
+### Critical File Path Rules
+
+**IMPORTANT**: Use these EXACT file paths:
+
+- `context/features/ROADMAP.md` (NOT `context/ROADMAP.md`)
+- `package.json` exists in the root directory
+- All feature files should be created in `context/features/` directory structure
+- NEVER create features in `docs/` directory
+
 ### Context File Updates
 
 - **CONTEXT.md**: Update all `[PLACEHOLDER]` values with actual project information
@@ -211,28 +336,26 @@ Before finalizing the context files, ensure you have:
 
 ## Common Scenarios
 
-### Scenario 1: New Project (No Existing Code)
+### Scenario 1: Solo Developer with Simple Project
 
-- Focus on requirements gathering and technology selection
-- Help users make informed decisions about their stack
-- Create comprehensive initial documentation
+- Focus on simple setup
+- Ask about immediate development needs
+- Keep documentation minimal but useful
 
-### Scenario 2: Existing Project (Adding Context)
+### Scenario 2: Team Project with Complex Requirements
 
-- Understand current implementation
-- Identify gaps in documentation
-- Update context to reflect actual state
+- Use detailed setup
+- Gather comprehensive stakeholder information
+- Plan for scalability and maintainability
 
-### Scenario 3: Project Migration
+### Scenario 3: Startup with Rapid Development
 
-- Understand current and target technologies
-- Plan migration strategy
-- Update context for new architecture
+- Balance between simple and detailed setup
+- Focus on MVP features
+- Plan for future scaling
 
-## Next Steps After Interview
+### Scenario 4: Enterprise Project
 
-1. **Immediately update** the context files with gathered information
-2. **Create a summary** of key decisions and next steps
-3. **Validate** that all placeholders have been replaced
-4. **Suggest** any missing information that could be valuable
-5. **Offer** to help with initial project setup or next development steps
+- Always use detailed setup
+- Gather extensive requirements
+- Plan for compliance and security needs
